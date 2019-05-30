@@ -6,6 +6,7 @@ import java.util.Arrays;
  * Created by Stas on 29.05.2019.
  */
 public class Loader {
+    //this example shows, how to sort arrays of any types without utilites
     public static void main(String[] args) {
 
         System.out.println("\n Sort Integers ==========================\n");
