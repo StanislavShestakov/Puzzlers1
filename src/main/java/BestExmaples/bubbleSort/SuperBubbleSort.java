@@ -24,7 +24,7 @@ public class SuperBubbleSort {
     static <E extends Comparable<E>> E[] sort(Object object) {
         E[] temp = null;
         if (object instanceof int[]) {
-            int[] arr = (int[]) object;
+            Integer[] arr = (Integer[]) object;
             Integer[] result = new Integer[arr.length];
             for (int i = 0; i < arr.length; i++) {
                 result[i] = Integer.valueOf(arr[i]);
@@ -60,21 +60,21 @@ public class SuperBubbleSort {
             }
             temp = (E[])   sort(result);
         } else if (object instanceof long[]) {
-            Long[] arr = (Long[]) object;
+            long[] arr = (long[]) object;
             Long[] result = new Long[arr.length];
             for (int i = 0; i < arr.length; i++) {
                 result[i] = Long.valueOf(arr[i]);
             }
             temp = (E[])   sort(result);
         } else if (object instanceof float[]) {
-            Float[] arr = (Float[]) object;
+            float[] arr = (float[]) object;
             Float[] result = new Float[arr.length];
             for (int i = 0; i < arr.length; i++) {
                 result[i] = Float.valueOf(arr[i]);
             }
             temp = (E[])     sort(result);
         } else if (object instanceof boolean[]) {
-            Boolean[] arr = (Boolean[]) object;
+            boolean[] arr = (boolean[]) object;
             Boolean[] result = new Boolean[arr.length];
             for (int i = 0; i < arr.length; i++) {
                 result[i] = Boolean.valueOf(arr[i]);
