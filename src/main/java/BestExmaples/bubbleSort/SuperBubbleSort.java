@@ -24,7 +24,7 @@ public class SuperBubbleSort {
     static <E extends Comparable<E>> E[] sort(Object object) {
         E[] temp = null;
         if (object instanceof int[]) {
-            Integer[] arr = (Integer[]) object;
+            int[] arr = (int[]) object;
             Integer[] result = new Integer[arr.length];
             for (int i = 0; i < arr.length; i++) {
                 result[i] = Integer.valueOf(arr[i]);
