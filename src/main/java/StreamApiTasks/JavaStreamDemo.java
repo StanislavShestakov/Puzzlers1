@@ -3,10 +3,15 @@ package StreamApiTasks;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class JavaStreamDemo {
     private static final List<String> DATA_1 = Arrays.asList("a1", "a2", "a4", "a3", "a1", "a4");
     private static final List<People> DATA_2 = Arrays.asList( new People("Вася", 16, Sex.MAN), new People("Петя", 23, Sex.MAN), new People("Елена", 42, Sex.WOMEN), new People("Иван Иванович", 69, Sex.MAN));
+    private static final List<Integer> DATA_3 = Arrays.asList(1, 2, 3, 4, 2);
 
     public static void main(String[] args) {
        /* System.out.println(task1_1());
@@ -23,7 +28,7 @@ public class JavaStreamDemo {
         System.out.println(task3_1());
         System.out.println(task3_2());
         System.out.println(task3_3());
-        System.out.println(task3_4());*/
+        System.out.println(task3_4());
 
         System.out.println(Arrays.toString(task4_1()));
         System.out.println(Arrays.toString(task4_2()));
@@ -31,6 +36,19 @@ public class JavaStreamDemo {
         System.out.println(Arrays.toString(task4_4()));
         System.out.println(Arrays.toString(task4_5()));
         System.out.println(Arrays.toString(task4_6()));
+
+        System.out.println(task5_1());
+        System.out.println(task5_2());
+        System.out.println(task5_3());
+        System.out.println(task5_4());
+
+        System.out.println(task6_1());
+        System.out.println(task6_2());
+        System.out.println(task6_3()); */
+
+        System.out.println(task7_1());
+        System.out.println(task7_2());
+        System.out.println(task7_3());
     }
 
     private static long task1_1(){
@@ -109,6 +127,52 @@ public class JavaStreamDemo {
         return DATA_2.stream().sorted(Comparator.comparing((People p) -> p.sex).thenComparing(p -> p.name)).toArray(People[]::new);
     }
 
+    private static String task5_1(){
+        return DATA_1.stream().max(String::compareTo).get();
+    }
+
+    private static String task5_2(){
+        return DATA_1.stream().min(String::compareTo).get();
+    }
+
+    private static People task5_3(){
+        return DATA_2.stream().max(Comparator.comparingInt(People::getAge)).get();
+    }
+
+    private static People task5_4(){
+        return DATA_2.stream().min(Comparator.comparingInt(People::getAge)).get();
+    }
+
+
+    private static Integer task6_1(){
+        return DATA_3.stream().mapToInt(Integer::intValue).sum();
+    }
+
+    private static Integer task6_2(){
+        return DATA_3.stream().mapToInt(Integer::intValue).max().orElse(-1);
+    }
+
+    private static Integer task6_3(){
+        return DATA_3.stream().mapToInt(Integer::intValue).filter(e -> e % 2 != 0).sum();
+    }
+
+    private static Integer task7_1(){
+        return DATA_3.stream().mapToInt(Integer::intValue).filter(e -> e % 2 != 0).sum();
+    }
+
+    private static Double task7_2(){
+        return DATA_3.stream().mapToInt(Integer::intValue).map(e -> e -= 1).average().getAsDouble();
+    }
+
+    private static String task7_3(){
+        return DATA_3.stream().mapToInt(Integer::intValue).map(e -> e += 3).summaryStatistics().toString();
+    }
+
+    private static Map<String, String> task7_4(){
+        return DATA_3.stream().mapToInt(Integer::intValue).map(e -> e += 3).boxed().flatMap(e -> ).collect(Collectors.toMap(e -> e, e -> e));
+    }
+
+
 
 
 
@@ -116,12 +180,25 @@ public class JavaStreamDemo {
     private static class People {
         String name;
         int age;
+
         Sex sex;
 
         People(String name, int age, Sex sex) {
             this.name = name;
             this.age = age;
             this.sex = sex;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public Sex getSex() {
+            return sex;
         }
 
         @Override
