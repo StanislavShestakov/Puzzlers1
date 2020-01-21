@@ -5,7 +5,9 @@ package expressivePuzzlers;
  */
 public class Oddity {
     public static boolean isOdd(int i) {
-        return i % 2 == 1;
+
+       //return i % 2 == 1;// wrong
+        return  i % 2 != 0;//right
     }
 
     public static void main(String[] args) {
