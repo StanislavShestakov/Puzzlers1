@@ -1,4 +1,4 @@
-package BestExmaples.hardTest;
+package BestExmaples.test;
 
 public class IntializationOrder {
     {
