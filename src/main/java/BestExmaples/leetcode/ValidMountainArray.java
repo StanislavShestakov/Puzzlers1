@@ -5,6 +5,9 @@ import java.util.Arrays;
 public class ValidMountainArray {
     //https://leetcode.com/explore/featured/card/fun-with-arrays/527/searching-for-items-in-an-array/3251/
     public static void main(String[] args) {
+        int[] arr4 = {2,1,2,3,5,7,9,10,12,14,15,16,18,14,13};
+        System.out.println(validMountainArray(arr4));
+        System.out.println(Arrays.toString(arr4));
         int[] arr = {3,7,6,4,3,0,1,0};
         System.out.println(validMountainArray(arr));
         System.out.println(Arrays.toString(arr));
@@ -17,9 +20,7 @@ public class ValidMountainArray {
         int[] arr3 = {1,3,2};
         System.out.println(validMountainArray(arr3));
         System.out.println(Arrays.toString(arr3));
-        int[] arr4 = {2,1,2,3,5,7,9,10,12,14,15,16,18,14,13};
-        System.out.println(validMountainArray(arr4));
-        System.out.println(Arrays.toString(arr4));
+
     }
     public static boolean validMountainArray(int[] A) {
         if(A.length < 3){
@@ -35,7 +36,6 @@ public class ValidMountainArray {
                 return false;
             }
             if(A[i] > A[i-1]){
-                System.out.println("Ascending");
                 if(!isAscending){
                     veerAmount++;
                     isAscending = true;
@@ -46,13 +46,14 @@ public class ValidMountainArray {
                 }
 
             }
+            if(A[i] < A[i - 1]){
+                isFirstDescending = true;
+            }
             if(A[i] < A[i - 1] && veerAmount > 0){
-                System.out.println("Descending");
                 if(!isDescending) {
                     veerAmount++;
                     isDescending = true;
                     isAscending = false;
-                    isFirstDescending = true;
                 }
             }
 
