@@ -14,19 +14,13 @@ public class MoveZeros {
     }
     public static int[] moveZeroes(int[] nums) {
         int index = 0;
-        for (int j = 0; j < nums.length; j++) {
-            for (int i = 0; i < nums.length-j; i++) {
-
-                if (nums[i] == 0) {
-                    index = i;
-                    while (nums[i] == 0 && i < nums.length - 1) {
-                        nums[i] = nums[i + 1];
-                        nums[i + 1] = 0;
-                        i++;
-                    }
-                    i = index;
-                }
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i] != 0){
+                nums[index++] = nums[i];
             }
+        }
+        for (int i = index; i < nums.length; i++) {
+            nums[i] = 0;
         }
 
      return nums;
