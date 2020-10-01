@@ -25,6 +25,9 @@ public class FindAllNumbersDisappearedInAnArray {
             if(nums[i] > current){
                 freeSpace++;
             }
+            if(nums[i] < current){
+                //todo
+            }
             if(current == nums[i]){
                 current++;
             }
