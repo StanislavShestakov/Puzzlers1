@@ -11,6 +11,8 @@ public class FindAllNumbersDisappearedInAnArray {
         System.out.println(findDisappearedNumbers(arr));
         int[] arr1 = {2,2};
         System.out.println(findDisappearedNumbers(arr1));
+        int[] arr2 = {1,1};
+        System.out.println(findDisappearedNumbers(arr2));
 
     }
     public static List<Integer> findDisappearedNumbers(int[] nums) {
@@ -20,11 +22,16 @@ public class FindAllNumbersDisappearedInAnArray {
         int current = 1;
         int freeSpace = 0;
         for (int i = 0; i < nums.length; i++) {
-
+            if(nums[i] > current){
+                freeSpace++;
+            }
             if(current == nums[i]){
                 current++;
             }
-
+            for (int j = 0; j < freeSpace ; j++) {
+                integers.add(current++);
+                freeSpace--;
+            }
         }
         return integers;
     }
